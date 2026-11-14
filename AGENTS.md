@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## App architecture
+- Keep page entry points in flat TanStack route files and reusable stock views in components; all four screens share one owner-scoped Cloud provider.
+- Use authenticated browser Data API calls under owner-scoped RLS; the database sale trigger locks stock and snapshots costs atomically to prevent overselling and profit changes.
+- Soft-delete inventory items to preserve historical sale records and totals; never delete sale snapshots when an item is removed.
+- Store uploaded jewellery photos in private Cloud Storage owner folders and display signed URLs; never expose other owners' files.
