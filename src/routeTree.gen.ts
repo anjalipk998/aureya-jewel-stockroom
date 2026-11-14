@@ -10,33 +10,80 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as RecordSaleRouteImport } from './routes/record-sale'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as SalesHistoryRouteImport } from './routes/sales-history'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecordSaleRoute = RecordSaleRouteImport.update({
+  id: '/record-sale',
+  path: '/record-sale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesHistoryRoute = SalesHistoryRouteImport.update({
+  id: '/sales-history',
+  path: '/sales-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/inventory': typeof InventoryRoute
+  '/record-sale': typeof RecordSaleRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/sales-history': typeof SalesHistoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/inventory': typeof InventoryRoute
+  '/record-sale': typeof RecordSaleRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/sales-history': typeof SalesHistoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/inventory': typeof InventoryRoute
+  '/record-sale': typeof RecordSaleRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/sales-history': typeof SalesHistoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/inventory' | '/record-sale' | '/reset-password' | '/sales-history'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/inventory' | '/record-sale' | '/reset-password' | '/sales-history'
+  id:
+    | '__root__'
+    | '/'
+    | '/inventory'
+    | '/record-sale'
+    | '/reset-password'
+    | '/sales-history'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InventoryRoute: typeof InventoryRoute
+  RecordSaleRoute: typeof RecordSaleRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SalesHistoryRoute: typeof SalesHistoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +95,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/record-sale': {
+      id: '/record-sale'
+      path: '/record-sale'
+      fullPath: '/record-sale'
+      preLoaderRoute: typeof RecordSaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-history': {
+      id: '/sales-history'
+      path: '/sales-history'
+      fullPath: '/sales-history'
+      preLoaderRoute: typeof SalesHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InventoryRoute: InventoryRoute,
+  RecordSaleRoute: RecordSaleRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SalesHistoryRoute: SalesHistoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
