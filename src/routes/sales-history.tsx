@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { SalesHistory } from '@/components/manager-views';
+export const Route=createFileRoute('/sales-history')({head:()=>({meta:[{title:'SalesHistory | Aureya Jewels — Stock Manager'},{name:'description',content:'Manage sales-history for your Aureya Jewels collection.'},{property:'og:title',content:'SalesHistory — Aureya Jewels'},{property:'og:description',content:'Manage sales-history for your jewellery collection.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:SalesHistory});
