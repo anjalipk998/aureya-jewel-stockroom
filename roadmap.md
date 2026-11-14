@@ -1,5 +1,6 @@
 # Aureya stock manager
-- [ ] Boutique design and four pages
-- [ ] Private Cloud inventory, photo uploads, stock-safe sales
-- [ ] Search, filters, CSV, feedback, empty states
-- [ ] Verify calculations and owner workflow on desktop/mobile
+- [x] Boutique design and four pages
+- [x] Private Cloud inventory, photo uploads, stock-safe sales
+- [x] Search, filters, CSV, feedback, empty states
+- [x] Verify calculations and public desktop/mobile pages
+- [ ] Verify signed-in add-item and sale workflow — blocked until the owner creates the first account.
