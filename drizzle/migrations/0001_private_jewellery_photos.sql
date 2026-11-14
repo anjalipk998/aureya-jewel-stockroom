@@ -1,0 +1,1 @@
+CREATE POLICY own_jewellery_photos ON storage.objects FOR ALL TO authenticated USING(bucket_id='jewellery-photos' AND (storage.foldername(name))[1]=auth.uid()::text) WITH CHECK(bucket_id='jewellery-photos' AND (storage.foldername(name))[1]=auth.uid()::text);

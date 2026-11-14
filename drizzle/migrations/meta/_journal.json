@@ -8,6 +8,13 @@
       "when": 1794682566979,
       "tag": "0000_aureya_inventory_sales",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794682585007,
+      "tag": "0001_private_jewellery_photos",
+      "breakpoints": true
     }
   ]
 }
