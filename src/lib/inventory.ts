@@ -1,0 +1,10 @@
+import { z } from 'zod';
+export const categories = ['Necklaces','Chain','Ring','Earrings Jumka','Earrings Hangi','Bangles','Earrings Studs','Bracelets','Other'] as const;
+export const money = (n: number) => new Intl.NumberFormat('en-IN', { style:'currency', currency:'INR', maximumFractionDigits:2 }).format(n);
+export const number = (n: number) => new Intl.NumberFormat('en-IN').format(n);
+export const today = () => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+export const itemSchema = z.object({name:z.string().trim().min(1,'Enter an item name').max(100), category:z.enum(categories), purchased:z.coerce.number().int().min(0).max(1000000), purchase_price:z.coerce.number().min(0).max(9999999999), selling_price:z.coerce.number().min(0).max(9999999999), notes:z.string().trim().max(1000)});
+export const saleSchema = z.object({item_id:z.string().uuid('Choose an item'),quantity:z.coerce.number().int().positive('Quantity must be at least 1'),unit_price:z.coerce.number().min(0),payment:z.enum(['Cash','GPay']),date:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(d=>d<=today(),'Date cannot be in the future'),note:z.string().trim().max(1000)});
+export function validateStock(purchased:number,sold:number,qty:number) { if (!Number.isInteger(qty)||qty<=0||qty>purchased-sold) throw new Error('Not enough stock available. Enter a valid quantity.'); }
+export const profit = (price:number,cost:number,qty:number) => Math.round((price-cost)*qty*100)/100;
+export function downloadCsv(name:string,rows:unknown[][]) { const cell=(v:unknown)=>{let s=String(v??'');if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};const blob=new Blob(['\uFEFF'+rows.map(r=>r.map(cell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name+'.csv';a.click();URL.revokeObjectURL(url); }

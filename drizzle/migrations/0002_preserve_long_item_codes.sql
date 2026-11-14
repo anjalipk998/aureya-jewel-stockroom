@@ -1,0 +1,3 @@
+ALTER TABLE public.items ALTER COLUMN code SET DEFAULT ('AJ-' || CASE WHEN currval('public.aj_item_code') IS NULL THEN '' ELSE '' END);
+CREATE FUNCTION public.next_aj_code() RETURNS text LANGUAGE plpgsql SET search_path=public AS $$ DECLARE n text; BEGIN n:=nextval('public.aj_item_code')::text; RETURN 'AJ-' || lpad(n,greatest(4,length(n)),'0'); END $$;
+ALTER TABLE public.items ALTER COLUMN code SET DEFAULT public.next_aj_code();

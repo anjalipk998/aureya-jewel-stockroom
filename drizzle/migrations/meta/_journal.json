@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794682566979,
+      "tag": "0000_aureya_inventory_sales",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794682585007,
+      "tag": "0001_private_jewellery_photos",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794682797305,
+      "tag": "0002_preserve_long_item_codes",
+      "breakpoints": true
+    }
+  ]
+}
