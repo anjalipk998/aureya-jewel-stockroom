@@ -3,13 +3,10 @@ import { z } from 'zod';
 import { Camera,Trash2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useStock,type Item } from './stock-provider';
-import { categories,itemSchema } from '@/lib/inventory';
+import { categories,itemSchema,photoError } from '@/lib/inventory';
 import { Button } from '@/components/ui/button';
 import { Dialog,DialogContent,DialogTitle,DialogDescription } from '@/components/ui/dialog';
 import { toast } from 'sonner';
-
-const PHOTO_TYPES = ['image/jpeg','image/png','image/webp'];
-const MAX_PHOTO_BYTES = 5*1024*1024;
 
 export function ItemForm({open,onOpenChange,item}:{open:boolean;onOpenChange:(v:boolean)=>void;item?:Item|undefined}){
  const {user,refresh}=useStock();
