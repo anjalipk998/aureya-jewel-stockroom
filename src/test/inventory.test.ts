@@ -8,4 +8,8 @@ describe('inventory rules',()=>{
  it('rejects negative quantity',()=>expect(()=>validateStock(10,0,-1)).toThrow());
  it('rejects negative purchase price',()=>expect(itemSchema.safeParse({name:'Ring',category:'Ring',purchased:2,purchase_price:-1,selling_price:100,notes:''}).success).toBe(false));
  it('groups INR in the Indian system',()=>expect(money(123456)).toBe('₹1,23,456.00'));
+ it('accepts JPG, PNG and WebP photos',()=>{expect(photoError('image/jpeg',1000)).toBe('');expect(photoError('image/png',1000)).toBe('');expect(photoError('image/webp',1000)).toBe('');});
+ it('rejects other photo formats',()=>expect(photoError('image/gif',1000)).toBe('Choose a JPG, PNG or WebP photo.'));
+ it('rejects photos over 5 MB',()=>expect(photoError('image/jpeg',maxPhotoBytes+1)).toBe('Photo must be 5 MB or smaller.'));
+ it('accepts a photo exactly at the size limit',()=>expect(photoError('image/jpeg',maxPhotoBytes)).toBe(''));
 });
