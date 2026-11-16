@@ -22,6 +22,13 @@
       "when": 1794682797305,
       "tag": "0002_preserve_long_item_codes",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794846325920,
+      "tag": "0003_editable_sales",
+      "breakpoints": true
     }
   ]
 }
