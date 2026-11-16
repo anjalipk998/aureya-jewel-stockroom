@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Dialog,DialogContent,DialogTitle,DialogDescription } from '@/components/ui/dialog';
-import { useStock,type Item } from './stock-provider';
+import { useStock,type Item,type Sale } from './stock-provider';
 import { AddItemButton } from './manager-shell';
 import { ItemForm } from './item-form';
 import { AuthDialog } from './auth-dialog';
