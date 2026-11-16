@@ -18,8 +18,7 @@ export function ItemForm({open,onOpenChange,item}:{open:boolean;onOpenChange:(v:
   return()=>{if(objectUrl.current)URL.revokeObjectURL(objectUrl.current);objectUrl.current='';};
  },[open,item?.id,item?.photo]);
  function pick(next:File|null){if(!next)return;
-  if(!PHOTO_TYPES.includes(next.type)){setError('Choose a JPG, PNG or WebP photo.');return;}
-  if(next.size>MAX_PHOTO_BYTES){setError('Photo must be 5 MB or smaller.');return;}
+  const problem=photoError(next.type,next.size);if(problem){setError(problem);return;}
   setError('');setRemovePhoto(false);setFile(next);
   if(objectUrl.current)URL.revokeObjectURL(objectUrl.current);
   objectUrl.current=URL.createObjectURL(next);setPreview(objectUrl.current);

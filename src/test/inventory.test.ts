@@ -1,5 +1,5 @@
 import { describe,it,expect } from 'vitest';
-import { categories,profit,validateStock,itemSchema,money } from '../lib/inventory';
+import { categories,profit,validateStock,itemSchema,money,photoError,maxPhotoBytes } from '../lib/inventory';
 describe('inventory rules',()=>{
  it('uses exactly the requested categories',()=>expect(categories).toEqual(['Necklaces','Chain','Ring','Earrings Jumka','Earrings Hangi','Bangles','Earrings Studs','Bracelets','Other']));
  it('calculates profit from actual unit price',()=>expect(profit(850,500,3)).toBe(1050));
